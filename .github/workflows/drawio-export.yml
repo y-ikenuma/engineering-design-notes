@@ -17,7 +17,7 @@ jobs:
       - name: Install draw.io CLI
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb libasound2t64 libgbm1 libx11-6 libxfont2
+          sudo apt-get install -y xvfb libasound2t64 libgbm1 libx11-6 libxfont2 fonts-noto-cjk
           wget -q https://github.com/jgraph/drawio-desktop/releases/download/v24.7.5/drawio-amd64-24.7.5.deb
           sudo apt-get install -y ./drawio-amd64-24.7.5.deb
 
@@ -29,8 +29,9 @@ jobs:
           done
 
       - name: Upload generated PNGs
-        uses: actions/upload-artifact@v4
-        with:
-          name: drawio-png
-          path: |
-            **/*.png
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "**/*.png"
+          git commit -m "chore: generate PNG exports from draw.io diagrams" || true
+          git push
