@@ -6,6 +6,9 @@ on:
     paths:
       - '**/*.drawio'
 
+permissions:
+  contents: write
+
 jobs:
   export:
     runs-on: ubuntu-latest
