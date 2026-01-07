@@ -17,7 +17,7 @@ jobs:
       - name: Install draw.io CLI
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb libasound2 libgbm1
+          sudo apt-get install -y xvfb libasound2t64 libgbm1
           wget -q https://github.com/jgraph/drawio-desktop/releases/download/v24.7.5/drawio-amd64-24.7.5.deb
           sudo apt-get install -y ./drawio-amd64-24.7.5.deb
 
